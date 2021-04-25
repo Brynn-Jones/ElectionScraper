@@ -45,7 +45,9 @@ Examples:
 
 > (Elect) C:\ElectionScraper-master>election_scraper.py "https://volby.cz/pls/ps2017nss/ps32?xjazyk=CZ&xkraj=2&xnumnuts=2102" results_beroun
 
-> (Elect) C:\ElectionScraper-master>election_scraper.py "https://volby.cz/pls/ps2017nss/ps3?xjazyk=CZ" results_all
+> (Elect) C:\ElectionScraper-master>election_scraper.py "https://volby.cz/pls/ps2017nss/ps3?xjazyk=CZ" results_all_regions
+
+> (Elect) C:\ElectionScraper-master>election_scraper.py "https://volby.cz/pls/ps2017nss/ps3?xjazyk=EN" results_all_regions (English version, names without diacritics)
 
 The extracted results are then saved as a CSV file.
 
