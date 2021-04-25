@@ -4,6 +4,7 @@ import sys
 import requests
 from bs4 import BeautifulSoup
 import re
+import locale
 
 
 
@@ -75,9 +76,18 @@ def extract_dis_data(tables):
 
     return dis_data
 
+def language():
+    locale.setlocale(locale.LC_ALL, "")  #user settings
+    lang = locale.localeconv()['decimal_point']  #prints what is used as decimal point
+    return lang
 
 def create_csv(data, file_name):
     print('Creating a CSV file...')
+
+    if language() == ",":
+        delim = ';'
+    else:
+        delim = ','
 
     poli_names = []
     for mun in data:
@@ -87,7 +97,7 @@ def create_csv(data, file_name):
 
     with open(str(file_name) + '.csv', 'a+', newline='', encoding='utf-8-sig') as file:  #utf bom
         header = ['CODE', 'NAME', 'REGISTERED', 'ENVELOPES', 'VALID'] + poli_names
-        writer = csv.writer(file, dialect='excel')
+        writer = csv.writer(file, dialect='excel', delimiter=delim)
         writer.writerow(header)
 
         for mun_info in data:
